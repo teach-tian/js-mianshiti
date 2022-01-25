@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+
+  // 掌握：基本数据类型: Number,String,Boolean,Undefined,Numll,Symbol(es6)
+  // 引用数据类型：Object(Object,Array,Date,Functin,RegExp)
+
+
+  // 存储原理
+
+  // 栈内存（基本数据类型《值类型》），栈+堆内存（引用数据类型《复杂数据类型》）
+ 
+
+  // 引用数据类型
+
+  //  var obj={name:'铁蛋'}
+  //  console.log(obj)
+  //  var pox=obj;
+  //  pox.name='狗蛋'
+  //  console.log(obj);
+
+
+  // console.log({name:100}=={name:100})//false
+  // console.log([]==[])//false
+  // console.log(false==false)//true
+  // console.log([0]==[0])//false
+  // console.log({}=={})//false
+
+  // var obj={name:100}
+
+  // var pox=obj;
+
+  // console.log(obj==pox)//true
+
+  // pox.name=200;
+
+  // console.log(pox==obj)//true
+
+  // obj={name:100}
+
+  // console.log(pox==obj);//false
+
+   var res={code:200,data:{list:[],userInfo:{name:'kity',address:'xxx'}}}
+
+   var obj=res;
+
+
+   obj.code=201;
+
+   console.log(res,obj);
+
+
+   
+
+</script>

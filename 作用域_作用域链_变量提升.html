@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  
+</body>
+</html>
+
+<script>
+// 预解析池 var a=100; function fn;var f=400;
+
+  // 什么叫作用域？
+  // 变量的使用范围
+
+  // 作用域？
+  // 全局作用域   
+  // 函数作用域
+  // 块级作用域 （es6）
+
+  var a=100;//全局
+  console.log(a);//100
+
+  function fn(){  //函数
+    var b=200;
+    function foo(){
+      var c=300
+    }
+  }
+  // console.log(b);//报错
+
+  console.log(f);//undefined
+
+  var f=400;
+
+  console.log(f);
+
+
+  // 变量提升 （预解析）
+  // js是单线程。js内核在解析代码的时候，会先进行预解析。
+  // 会在作用域的最顶端，形成一个容器 (预解析池)
+  //  把当前作用域中，带var ,带function的都放进来
+
+
+
+  // function foo(){
+  //   var d=10;
+  //   function foo1(){
+  //     var f=300;
+  //     function foo2(){
+  //       var g=400;
+  //       console.log(y);//自由变量  同步执行。阻塞
+  //       console.log(d); //自由变量
+  //       console.log(g);
+       
+  //     }
+  //     foo2()
+  //   }
+  //   foo1()
+  // }
+
+  // foo()
+
+
+  // var x = 30;
+  // function test(){
+  //   // 预解析池； var x=20;
+  //     alert(x);
+  //     var x = 10;
+  //     alert(x);
+  //     x=20;
+  //     function x(){
+
+  //     };
+  //     alert(x);
+  // }
+  // test();
+
+  let oLi=document.querySelectorAll('li');
+  console.log(oLi)
+  for(var i=0;i<oLi.length;i++){
+    //  oLi[i].onclick=function(){
+    //    console.log(i);
+    //  }
+    (function(i){
+     oLi[i].onclick=function(){
+       console.log(i);
+     }
+    })(i)
+  }
+   
+
+</script>

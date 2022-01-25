@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+
+  // 第一种方法：typeof方法
+
+  // console.log(typeof 'hello');// 'string' ==> String
+  // console.log(typeof(100));// 'number'===> Number
+  // console.log(typeof(false)); // ‘boolean’====>Boolean
+  // console.log(typeof undefined); //'undefined'===>Undefined
+  // console.log(typeof null);// 'object'===>Object 失效
+
+  // console.log(typeof {})// 'object'
+  // console.log(typeof []) //'object'
+  // console.log(typeof new Date());//'object'
+  // console.log(typeof function(){})//'function'
+  // console.log(typeof /^123$/);//'object'
+
+  // 根据上方可得：typeof检测基本数据，是可以的，null除外，typeof null==='object'
+  // typeof 检测引用数据类型，失效，都会返回'object' ,function除外。
+
+  // console.log(typeof new Number(100));//'object'
+
+  // 故，typeof检测，构造函数创建的变量，都会返回object
+
+
+
+  // 第二种方法：instanceof  （检测变量的原型是否继承自某一个类）
+
+  // console.log(100 instanceof Number);// false
+  // console.log('hlelo' instanceof String);//false
+  // console.log(true instanceof String);//false
+  // console.log(undefined instanceof String);//false
+  // console.log(null instanceof String);//false
+
+  // instanceof检测字面量类型的基本数据类型，全部失效。
+
+  // console.log([] instanceof Array);//true
+  // console.log({} instanceof Object);//true
+  // console.log(new Date() instanceof Date);//true
+  // console.log(function(){} instanceof Function)//true
+  // console.log(/1234/ instanceof RegExp)//true
+
+  // instanceof 检测引用数据，非常准确
+
+  // 第三种方法：constructor
+
+  // var a=100;
+  // console.log(a.constructor==Number) //true
+  // console.log('hello'.constructor==String)//true
+  // console.log(true.constructor==Boolean)//true
+  // // console.log(null.constructor===Null)//报错
+  // // console.log(undefined.constructor==undefined)//报错
+
+  // console.log([].constructor===Array)
+  // console.log({}.constructor===Object)
+  // console.log(function(){}.constructor===Function)
+  // console.log(/123/.constructor==RegExp)
+  // console.log(new Date().constructor===Date);
+
+
+  // 总结：constructor检测所有数据类型准确，null,undefined除外，报错
+
+  // 隐患：在原型链继承的环节，容易被篡改。
+
+
+  // function Person(){
+
+  // }
+
+  // Person.prototype.run=function(){
+  //   console.log('我可以奔跑！')
+  // }
+
+  // function Foo(name){
+  //   this.name=name
+  // }
+  // //  constructor指针容易被篡改。
+  //  Foo.prototype=Person.prototype
+  // //  手动的指回来
+  //  Foo.prototype.constructor=Foo;
+
+  // let one=new Foo('阿三');
+
+  // console.log(one.constructor==Foo)
+
+
+  //  第四种方法：终极方式 Object.protoype.toString.call()
+
+  // console.log(Object.prototype.toString.call(100))
+
+  // console.log(Object.prototype.toString.call([]).replace(/^\[object (\S+)\]$/,'$1'));
+
+  // console.log({}.toString())//   '[object Object]'
+
+
+//  封装一个方法，万能数据类型检测
+
+function TypeName(v){
+   if(typeof v!='object'){
+       return typeof(v);
+   }
+
+  return Object.prototype.toString.call(v).replace(/\[object (\S+)]$/,'$1')
+}
+
+console.log(TypeName(100))
+
+
+
+
+
+</script>

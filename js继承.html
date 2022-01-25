@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+
+  // 继承多种，父类，两个关键点，prototype,call,apply,bind修改this指针实现借用
+
+  // 父类
+  // function People(name){
+  //   this.name=name||'kity';
+  //   this.sleep=function(){
+  //     console.log(this.name+'正在睡觉')
+  //   }
+  // }
+  // // 原型方法
+  // People.prototype.eat=function(food){
+  //   console.log(this.name+'正在吃'+food)
+  // }
+
+  // 原型链继承-将父类的实例作为子类的原型
+  // 特点：子类可以方位父类实例与原型上的属性和方法
+  // 缺点：子类不可以向父类中传参
+  //子类
+  // function Woman(){
+
+  // }
+
+  // Woman.prototype=new People();
+
+  // let womanObj=new Woman();
+
+  // console.log(womanObj.name)
+  // womanObj.sleep();
+  // womanObj.eat('西瓜');
+
+// 借用构造函数继承
+
+// 优点：可以向父类传参，
+// 缺点；无法拿到父类原型的方法或属性
+
+// function Woman(name){
+//     People.call(this);
+// }
+
+// let womanObj=new Woman('tom')
+
+// console.log(womanObj)
+
+// womanObj.sleep();
+// womanObj.eat();
+
+// 3.实例继承
+
+// 优点：既可以向父类传值，又可以继承父类原型
+// 缺点：constructor指向父类。
+
+// function Woman(name){
+//   let instance=new People();
+//   instance.name=name;
+//   return instance;
+// }
+// let womanObj=new Woman('tom');
+// console.log(womanObj)
+
+// 4.组合式继承
+
+// 优点：既可以实训实例属性和原型继承。
+// 缺点：原型对象上也有重复的属性存在
+
+  // function Woman(name,age){
+  //    People.call(this,name)
+  //    this.age=age;
+  // }
+ 
+  // Woman.prototype=new People();
+
+  // Woman.prototype.constructor=Woman;
+
+  // let woman=new Woman('tom',18);
+  // console.log(woman);
+
+  // 5.寄生组合式继承
+
+  // 优点：过于完美，可以实现实例和原型的继承。
+
+    // function  Woman(name,age){
+    //   People.call(this,name)
+    //   this.age=age;
+    // }
+
+    // (function(){
+    //   let Super=function(){};
+    //   Super.prototype = People.prototype;
+    //   Woman.prototype=new Super();
+    // })()
+
+    //  Woman.prototype.constructor=Woman;
+
+    //  let woman= new Woman('tome',20);
+   
+    //  console.log(woman)
+
+// es6中class实现继承
+
+// 父类
+    class People{
+      constructor(name,age){
+        this.name=name;
+        this.age=age;
+      }
+      eat(){
+        console.log(`${this.name}吃东西`)
+      }
+    }
+
+    // 子类
+    class Woman extends People{
+      constructor(name,age){
+        // 继承父类 ，父类的超集。
+        super(name,age);
+      }
+      eat(){ //语法糖
+        super.eat();
+      }
+    }
+
+    let woman=new Woman('tom',20)
+     console.log(woman)
+     woman.eat();
+
+</script>

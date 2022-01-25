@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+
+let obj={name:'kity',list:[1,2,3]}
+// 定义方法
+
+function deepClone(obj=[1,2,3]){
+  // 判断是不是基本数据类型
+  if(typeof obj!='object'||obj==null){
+    return obj;
+  }
+  // 初始化
+  let result;
+  if(obj instanceof Array){
+    result=[];
+  }else{
+    result ={}
+  }
+
+  for(let key in obj){
+     
+    // 排除原型上的方法或属性
+    if(obj.hasOwnProperty(key)){  //仅仅私有属性才可以进来
+        result[key]=deepClone(obj[key])
+    }
+  }
+
+  return result;
+
+
+
+}
+
+
+
+</script>

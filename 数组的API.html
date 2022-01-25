@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+
+<input type="checkbox" name="" id="" class="sum"> 全选
+
+<br>
+
+<div>分选</div>
+
+<input type="checkbox" name="" id="" class="item">
+  商品一
+<br>
+
+<input type="checkbox" name="" id="" class="item">
+  商品二
+
+  <br>
+  <input type="checkbox" name="" id="" class="item">
+  商品三
+
+  
+  
+
+<script>
+
+let sum=document.querySelector('.sum');
+
+let fen=document.querySelectorAll('.item')
+
+console.log(fen);
+
+// 绑定事件
+sum.onchange=function(e){
+
+   e=e||window.event;
+
+  // 找事件源对象
+  let target=e.srcElement||e.target;
+  console.log(target.checked);
+
+  let code=target.checked;
+
+ fen.forEach(item=>{
+   item.checked=code;
+ })
+
+}
+
+
+// 选中分选，动态的设置全选。
+
+fen.forEach(item=>{
+  item.onchange=function(){
+   let arr=[...fen]
+   let dede= arr.every(v=>{
+      return v.checked
+    })
+    if(dede){
+      sum.checked=true
+    }else{
+      sum.checked=false
+    }
+  }
+})
+
+
+
+
+
+
+
+
+
+  // 一：留作业，整理数组的方法。
+
+
+  // 数组es5标准新增的API
+
+  // indexOf() 表示：查找指定元素的下标（查找数组是否有某个元素）。两个参数：参一，要查找的元素，参二(可选默认=0)：开始查找的位置
+
+  // let arr=[1,2,3,4,5,6,7,4]
+
+  // 问题：数组内是否含有3，如果有，是第几项
+
+  // let n=arr.indexOf(4,0)
+
+  // if(n>-1){
+  //   console.log('含有')
+  // }
+
+  // console.log(n);
+  // forEach() 循环遍历，没有返回值，参数为函数，函数的参数。三个：1元素，2下标，3，原数组
+
+  // 寻找偶数
+  // let box=[];
+  // arr.forEach(function(item,key,list){
+  //       // if(!(item%2)){
+  //       //  box.push(item)
+  //       // }
+  //       // item=item+1
+  //       // arr[key]=arr[key]+1
+  //       // console.log(list)
+  // })
+
+  // console.log(arr)
+
+  // map()映射（一一对应。循序）有返回值。返回新数组。
+
+
+  //  let list= arr.map(function(item,key){
+  //      return item+1
+  //   })
+  //   console.log(list)
+  // 获取数组中的偶数项
+
+    // let list=[];
+    // arr.map(function(item){
+    //   if(item%2==0)list.push(item)
+    // })
+    // console.log(list)
+
+  //  let list= arr.map(function(item){
+      //  return item%2==0
+      // if(item%2==0) return item;
+    // })
+   
+    // console.log(list);
+
+    // filter() 过滤，返回满足条件的元素组成的数组。有返回值。
+
+    // let list= arr.filter(function(item,key){
+    //    return item%2==0;
+    //  })
+
+    //  console.log(list);
+
+    //  var arr=[{num:10,price:50},{num:5,price:10},{num:2,price:3}]
+
+    // // 需求，处理，拿到总价大于30的商品信息。
+
+    // let list=arr.filter(item=>{
+    //    return item.num*item.price>30
+    // })
+
+    // console.log(list)
+
+    // let newArr=[]
+    // arr.forEach((item,key)=>{
+    //   if(item.num*item.price>30){
+    //   list.push(item);
+    //   }
+    // })
+
+
+    // every() 返回布尔值，每一项都要满足给定条件。结果才返回true
+
+
+    // some() 返回布尔值， 只要有一项满足条件，结果就饿返回true
+
+
+
+  let arr=[1,3,5,7]
+
+  var a=arr.some(item=>{
+    return item%2==0
+  })
+
+  console.log(a);
+
+
+
+
+
+
+
+
+
+
+</script>

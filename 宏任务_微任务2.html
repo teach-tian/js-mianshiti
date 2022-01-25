@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+
+// console.log('---start---');//第一轮主线程 1
+ 
+//  setTimeout(() => {
+//    console.log('setTimeout');  // 将回调代码放入个宏任务队列，第二轮宏任务执行 5
+//  }, 0);
+  
+//  new Promise((resolve, reject) => {
+//    console.log('---Promise第一轮微任务同步执行---');//第一轮微任务同步执行 2
+//    resolve()
+//  }).then(()=>{
+//    console.log('Promise.then实例成功回调执行'); // 将回调代码放入微任务队列，第一轮宏任务执行完后立即执行 4
+//  });
+  
+//  console.log('---end---');//第一轮主线程结束 3
+
+//  var a=100;//字面量
+//  var a= new Number(100)//构造函数创建
+
+
+
+
+// // 宏任务队列 1
+// setTimeout(() => {
+//   // 宏任务队列 2.1
+//   console.log('timer_1');//2
+//   setTimeout(() => {
+//     // 宏任务队列 3
+//     console.log('timer_3')//6
+//   }, 0)
+//   new Promise(resolve => {
+//     resolve()
+//     console.log('new promise')//3
+//   }).then(() => {
+//     // 微任务队列 1
+//     console.log('promise then')//4
+//   })
+// }, 0)
+ 
+// setTimeout(() => {
+//   // 宏任务队列 2.2
+//   console.log('timer_2')//5
+// }, 0)
+// console.log('========== Sync queue ==========')//1
+//请写出输出内容
+async function async1() {
+       console.log('async1 start');
+       await async2();
+       console.log('async1 end');
+   }
+   async function async2() {
+       console.log('async2');
+   }
+   
+   console.log('script start');
+   
+   setTimeout(function() {
+       console.log('setTimeout');
+   }, 0)
+   
+   async1();
+   
+   new Promise(function(resolve) {
+       console.log('promise1');
+       resolve();
+   }).then(function() {
+       console.log('promise2');
+   });
+   console.log('script end');
+   
+ 
+</script>

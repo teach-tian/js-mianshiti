@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+
+  // 1.每个函数都有一个prototype，显示原型
+
+  function Fn(name,age){
+    this.name=name;
+    this.age=age;
+  }
+
+  Fn.prototype.eat=function(){
+    console.log('我可以吃')
+  }
+
+  // 得到一个实例
+  // 2.每个实例对象都有一个隐式原型，__proto__
+  //  每个实例对象的__proto__指向它构造函数的protype
+
+  let obj=new Fn('小红',18);
+  console.log(obj.__proto__==Fn.prototype)
+  // 3.每个函数的prototype内都有一个constructor指针。指向的是构造函数本身
+  console.log(Fn.prototype.constructor)
+
+  console.log(obj)
+  obj.eat();
+
+
+  console.log({}.constructor==Object)
+
+  console.log(obj.constructor==Fn)
+
+  console.log(obj.__proto__.__proto__.constructor)
+
+ 
+
+
+</script>

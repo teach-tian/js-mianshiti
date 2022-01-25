@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+  // 当面试官问你闭包问题？
+
+  // 闭包的概念。闭包的两种形式。作为参数被传递，函数作为返回值被返回。谈到闭包，不得不说this的指向问题。
+
+  // this有五种情况。
+
+  // 普通函数中的this
+
+  // function fn(){
+  //   console.log(this);
+  // }
+  // fn();  //相当于下面的window.fn();
+  // window.fn();
+  // // 普通函数中的this。指向window.
+  // let obj={name:'小明'}
+  // var name='杨志'
+  // let pox={
+  //   name:'小红',
+  //   run:()=>{
+  //     console.log(this.name)//this
+  //   }
+  // } 
+  // // 对象方法中的this.指向方法的调用者。
+  // pox.run();// 杨志
+  // pox.run.call(obj)// 杨志
+  // pox.run.ally(obj);// 杨志
+  // pox.run.bind(obj)();//杨志
+
+
+  // pox.run.apply(obj);
+
+  // 3.call() /apply() /bind() 都可以改变this指向
+
+  // call() 可以改变this指向，将this指向，改成第一个参数
+  // apply() 第一个参数与call是一样的，都是改变后的this指向
+
+  // call(this,单个)/apply（this,一组）第二个参数区别：
+
+
+  // bind() 第一个参数就是修改后的this指向。但是需要手动执行
+  // fn.call([1,2,3])
+  // function foo(){
+  //   // argument=[参数]  类数组/伪数组
+  //  let arg=arguments;
+  //  let arr=[4,5,6]
+  // //  arg.push(4) 借用数组
+  // // Array.prototype.push.call(arg,4)  // arg==[1,2,3,4]
+  // Array.prototype.push.apply(arg,arr)  // arg==[1,2,3,4,5,6]
+  // // Array.prototype.push.bind(arg)(4)  // arg==[1,2,3,4]
+
+  //  console.log(arg);//[1,2,3]
+  // }
+
+  // foo(1,2,3)
+  // console.log([1,2,3])
+
+  // 4. class() es6  this 指向实例对象
+
+
+    //  class Person{
+    //    constructor(name,age){
+    //     this.name=name;
+    //     this.age=age
+    //    }
+    //    say(){
+    //     console.log(`我叫${this.name}年龄是${this.age}`)
+    //    }
+    //  }
+
+    //  let lsy=new Person('李士乐',21);
+    //  console.log(lsy);// {name:'李士乐',age:21}
+
+    // 5. 箭头函数  es6
+    //  this时刻指向父级的上下文对象。并且不可以被 call()/apply()/bind()修改。
+    
+    // data(){
+    //   return {
+    //     arr:[]
+    //   }
+    // }
+     
+    // var that=this;
+    // axios.get().then(function(res){
+    //    that.arr=res.data.list
+    // })
+    // axios.get().then(res=>{
+    //   this.arr=res.data.list
+    // })
+
+
+    var name='xxx'
+    var list={
+      name:'标题',
+      sum:function(){
+      setTimeout(()=>{
+          console.log(this)
+        },1000)
+      }
+    }
+
+    list.sum();
+
+
+
+</script>
